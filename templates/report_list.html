@@ -1,0 +1,33 @@
+{% extends 'root_page.html' %}
+
+{% block content %}
+    <div class="wrapper style3">
+        <div class="inner">
+            <div class="container">
+                <div class="row">
+                    <div class="12u">
+
+                        <a href="{% url 'article_list' %}"><h2 class="icon fa-file-text-o">Отчеты</h2></a>
+                        {% for report in reports %}
+                            <article class="box report">
+                                {% if report.image %}
+                                    <a href="{% url 'report' report.pk %}" class="image report"><img src="{{ report.image.url }}" alt="" /></a>
+                                {% endif %}
+                                <div align="center">
+                                    <a href="{% url 'article' report.pk %}">
+                                        <header>
+                                            <h3>{{ report.main_title }}</h3>
+                                            <span class="date">{{ report.add_title }}</span>
+                                        </header>
+                                    </a>
+                                    {{ report.body|truncatechars_html:'300'|safe }}
+                                </div>
+                            </article>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

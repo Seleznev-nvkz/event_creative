@@ -1,0 +1,79 @@
+{% extends 'root_page.html' %}
+
+{% block header %}
+    <div id="banner">
+        <h2><strong>EventCreative:</strong> Пиздатые мероприятия
+        <br />
+        То да се</h2>
+        <p>Мб и сюда чо нить ебануть</p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="wrapper style1">
+        <div class="inner">
+
+            <!-- Feature 1 -->
+                <section class="container box feature1">
+                    <div class="row">
+                        <div class="12u">
+                            <header class="first major">
+                                <h2>Пали на ребят внизу</h2>
+                                <p>Эти уебы знают толк у кого заказывать мероприятия ...</p>
+                            </header>
+                        </div>
+                    </div>
+                    {% if reports.exists %}
+                        <div class="row">
+                            {% for report in reports %}
+                                <div class="4u">
+                                    <section>
+                                        <a href="#" class="image featured"><img src="{{ report.image.url }}" alt="" /></a>
+                                        <header class="second">
+                                            <h3>{{ report.main_title }}</h3>
+                                            <p>{{ report.add_title }}</p>
+                                        </header>
+                                    </section>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </section>
+
+        </div>
+    </div>
+    <div class="wrapper style2">
+        <div class="inner">
+
+            <!-- Feature 2 -->
+                <section class="container box feature2">
+                    в этот контейнер ебануть услуги и т.п. хероту
+                    <div class="row">
+                        <div class="6u">
+                            <section>
+                                <header class="major">
+                                    <h2>Хочешь иметь заебачий зад?</h2>
+                                    <p>Хочешь иметь крутую упругую задницу??</p>
+                                </header>
+                                <p>Тяни это дерьмо, пельмешек!! Тяни это дерьмо, пельмешек!!
+                                Тяни это дерьмо, пельмешек!! Тяни это дерьмо, пельмешек!!
+                                Тяни это дерьмо, пельмешек!! Тяни это дерьмо, пельмешек!! </p>
+                            </section>
+                        </div>
+                        <div class="6u">
+                            <section>
+                                <header class="major">
+                                    <h2>А вообще думаю сюда заголовок запилить</h2>
+                                    <p>Типа нихуясе вот чо мы предлагаем</p>
+                                </header>
+                                <p>Просто убер-фантастик! Что не закажишь - все ахуенно! Круче не предумаешь!</p>
+                            </section>
+                        </div>
+                    </div>
+                    <footer>
+                        <a href="{% url 'service_list' %}" class="button sausage alt icon fa-info-circle">А ну ка чо там >></a>
+                    </footer>
+                </section>
+            </div>
+    </div>
+{% endblock %}

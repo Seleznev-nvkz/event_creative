@@ -1,0 +1,106 @@
+{% load menu %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{{title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="/static/js/jquery.min.js"></script>
+		<!--<script src="js/jquery.dropotron.min.js"></script>-->
+		<script src="/static/js/skel.min.js"></script>
+		<script src="/static/js/skel-layers.min.js"></script>
+		<script src="/static/js/init.js"></script>
+{#		<noscript>#}
+			<link rel="stylesheet" href="/static/css/skel.css" />
+			<link rel="stylesheet" href="/static/css/style.css" /> {# КАКОГО БЛЯТЬ ХУЯ ТЫ ЩАС ЗАРАБОТАЛ!!! #}
+			<link rel="stylesheet" href="/static/css/style-desktop.css" />
+{#		</noscript>#}
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header -->
+			<div id="header-wrapper">
+				<div class="container">
+                    <header id="header">
+                        <div class="inner">
+                            <h1><a href="{% url 'main_page' %}" id="logo">EventCreative</a></h1>
+                            <nav id="nav">
+                                <ul>
+                                    <li class="{% active_url request 'main_page' %}"><a href="{% url 'main_page' %}">Главная</a></li>
+                                    <li class="{% active_url request 'service_list' %}"><a href="{% url 'service_list' %}">Услуги</a></li>
+                                    <li class="{% active_url request 'article_list article' %}"><a href="{% url 'article_list' %}">Статьи</a></li>
+                                    <li class="{% active_url request 'report_list report' %}"><a href="{% url 'report_list' %}">Отчеты</a></li>
+                                    <li class="{% active_url request 'contacts' %}"><a href="{% url 'contacts' %}">О нас</a></li>
+                                    <li>
+                                        <a class="social_icon"><img src="/static/images/rsz_vk.png" class="vk"></a>
+                                        <a class="social_icon"><img src="/static/images/rsz_1instagram.png" class="instagram"></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </header>
+
+                    {% block header %}{% endblock %}
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+                {% block content %} {% endblock %}
+                {% include 'articles_block.html' %}
+			</div>
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+				<footer id="footer" class="container">
+					<div class="row">
+						<div class="6u"> </div>
+						<div class="6u">
+
+							<!-- Contact -->
+								<section>
+									<h2>Наши контакты</h2>
+									<div>
+										<div class="row">
+											<div class="6u">
+												<dl class="contact">
+													<dt>Vkontakte</dt>
+													<dd><a href="#">vk.com/ev_cr</a></dd>
+													<dt>Facebook</dt>
+													<dd><a href="#">facebook.com/untitled</a></dd>
+													<dt>Instagram</dt>
+													<dd><a href="#">untitled.tld</a></dd>
+													<dt>Email</dt>
+													<dd><a href="#">user@untitled.tld</a></dd>
+												</dl>
+											</div>
+											<div class="6u">
+												<dl class="contact">
+													<dt>Адрес</dt>
+													<dd>
+														1234 Fictional Rd<br />
+														Nashville, TN 00000-0000<br />
+														USA
+													</dd>
+													<dt>Телефоны</dt>
+													<dd>
+                                                        (000) 000-0000<br />
+
+                                                    </dd>
+												</dl>
+											</div>
+										</div>
+									</div>
+								</section>
+
+						</div>
+					</div>
+				</footer>
+			</div>
+
+	</body>
+</html>

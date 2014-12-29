@@ -1,0 +1,28 @@
+{% extends 'root_page.html' %}
+
+{% block content %}
+
+    <div class="wrapper style2">
+        <div class="inner">
+            <div class="container">
+                <div id="content">
+
+                    <article>
+                        <header class="major">
+                            <h2>{{ article.title }}</h2>
+                            <p>{{ article.create_date|date:'d M Y' }}</p>
+                        </header>
+
+                        {% if article.image %}
+                            <span class="image featured"><img src="{{ article.image.url }}" alt="" /></span>
+                        {% endif %}
+
+                        <p>{{ article.body|safe }}</p>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

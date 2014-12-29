@@ -1,0 +1,27 @@
+{% extends 'root_page.html' %}
+
+{% block content %}
+
+    <div class="wrapper style3">
+        <div class="inner">
+            <div class="container">
+                <div id="content">
+
+                    <header class="major">
+                        <h2>{{ report.main_title }}</h2>
+                        <p>{{ report.add_title }}</p>
+                        <p>{{ report.create_date|date:'d M Y' }}</p>
+                    </header>
+
+                    {% if report.image %}
+                        <span class="image featured"><img src="{{ report.image.url }}" alt="" /></span>
+                    {% endif %}
+
+                    <p>{{ report.body|safe }}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

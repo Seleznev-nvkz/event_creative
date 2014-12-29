@@ -1,0 +1,54 @@
+{% if articles.exists %}
+    <div class="wrapper style3">
+        <div class="inner">
+            <div class="container">
+                <div class="row">
+                    <div class="8u">
+
+                        <!-- Article list -->
+                            <section class="box article-list">
+                                <a href="{% url 'article_list' %}"><h2 class="icon fa-file-text-o">Тематические заебические статьи</h2></a>
+                                {% for article in articles %}
+                                    <article class="box excerpt">
+                                        {% if article.image %}
+                                            <a href="{% url 'article' article.pk %}" class="image left"><img src="{{ article.image.url }}" alt="" /></a>
+                                        {% endif %}
+                                        <div>
+                                            <header>
+                                                <span class="date">{{ article.update_date|date:'M Y' }}</span>
+                                                <h3><a href="{% url 'article' article.pk %}">{{ article.title }}</a></h3>
+                                            </header>
+                                            <p>{{ article.body|truncatechars_html:'300'|safe }}</p>
+                                        </div>
+                                    </article>
+                                {% endfor %}
+                            </section>
+
+                            {#  Pagination  #}
+                            {% include 'pagination.html' with url_part='articles' %}
+
+                    </div>
+                    <div class="4u">
+
+                        <section class="box spotlight random_report">
+                            {% if random_report.image %}
+                                <a href="{% url 'report' random_report.pk %}" class="image featured"><img src="{{ random_report.image.url }}" alt=""></a>
+                            {% endif %}
+                            <a href="{% url 'report' random_report.pk %}">
+                                <header>
+                                    <h3>{{ random_report.main_title }}</h3>
+                                    <p>{{ random_report.add_title }}</p>
+                                </header>
+                            </a>
+                            {{ random_report.body|truncatechars_html:'500'|safe }}
+                            <footer>
+                                <a href="{% url 'report' random_report.pk %}" class="button sausage alt icon fa-file-o">Подробнее >></a>
+                            </footer>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
