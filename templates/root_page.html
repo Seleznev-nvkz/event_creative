@@ -7,8 +7,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="/static/js/jquery.min.js"></script>
-		<!--<script src="js/jquery.dropotron.min.js"></script>-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="/static/js/skel.min.js"></script>
 		<script src="/static/js/skel-layers.min.js"></script>
 		<script src="/static/js/init.js"></script>
@@ -34,7 +33,7 @@
                                     <li class="{% active_url request 'service_list' %}"><a href="{% url 'service_list' %}">Услуги</a></li>
                                     <li class="{% active_url request 'article_list article' %}"><a href="{% url 'article_list' %}">Статьи</a></li>
                                     <li class="{% active_url request 'report_list report' %}"><a href="{% url 'report_list' %}">Отчеты</a></li>
-                                    <li class="{% active_url request 'contacts' %}"><a href="{% url 'contacts' %}">О нас</a></li>
+{#                                    <li class="{% active_url request 'contacts' %}"><a href="{% url 'contacts' %}">О нас</a></li>#}
                                     <li>
                                         <a class="social_icon"><img src="/static/images/rsz_vk.png" class="vk"></a>
                                         <a class="social_icon"><img src="/static/images/rsz_1instagram.png" class="instagram"></a>

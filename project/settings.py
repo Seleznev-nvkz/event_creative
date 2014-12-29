@@ -90,7 +90,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = path.join(BASE_DIR, 'media')
 STATIC_ROOT = path.join(PROJECT_ROOT, 'static')
 STATICFILES_DIRS = (
-    # path.join(path.dirname(__file__), 'static'),
     path.join(BASE_DIR, 'static'),
 )
 

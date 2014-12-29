@@ -11,7 +11,9 @@
                         {% for report in reports %}
                             <article class="box report">
                                 {% if report.image %}
-                                    <a href="{% url 'report' report.pk %}" class="image report"><img src="{{ report.image.url }}" alt="" /></a>
+                                    <a href="{% url 'report' report.pk %}" class="image report">
+                                        <div><img src="{{ report.image.url }}" alt="" /></div>
+                                    </a>
                                 {% endif %}
                                 <div align="center">
                                     <a href="{% url 'article' report.pk %}">
@@ -20,10 +22,12 @@
                                             <span class="date">{{ report.add_title }}</span>
                                         </header>
                                     </a>
-                                    {{ report.body|truncatechars_html:'300'|safe }}
+                                    {{ report.body|truncatechars_html:'500'|safe }}
                                 </div>
                             </article>
                         {% endfor %}
+
+                        {% include 'pagination.html' with url_part='reports' %}
 
                     </div>
                 </div>

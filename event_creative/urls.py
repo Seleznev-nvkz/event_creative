@@ -5,7 +5,7 @@ urlpatterns = patterns(
     'event_creative.urls',
     url(r'^$', Index.as_view(), name='main_page'),
     url(r'^articles/$', ArticleList.as_view(), name='article_list'),
-    url(r'^contacts/$', Contacts.as_view(), name='contacts'),
+    # url(r'^contacts/$', Contacts.as_view(), name='contacts'),
     url(r'^article/(?P<pk>[0-9]{1,3})/$', ArticleDetail.as_view(), name='article'),
     url(r'^services/$', Services.as_view(), name='service_list'),
     url(r'^reports/$', ReportList.as_view(), name='report_list'),

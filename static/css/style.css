@@ -199,14 +199,14 @@
 
 		footer
 		{
-			margin: 2.5em 0 0 0;
+			/*margin: 2.5em 0 0 0;*/
 		}
 		
 		header.major
 		{
 			border-bottom: double 6px #dbdbdb;
 			margin: 0 0 3em 0;
-            height: 150px;
+            height: 75px;
 		}
 		
 			/*header.major:after*/
@@ -437,8 +437,12 @@
             }
                 .image.report img {
                     margin: 0 auto;
-					width: auto;
-                    min-height: 400px;
+					width: 80%;
+                }
+                .image.report>div {
+                    overflow: hidden;
+                    max-height: 400px;
+                    border-radius: 8px;
                 }
 
 	/* Button */

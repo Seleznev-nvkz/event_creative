@@ -1,1 +1,36 @@
 {% extends 'root_page.html' %}
+
+{% block content %}
+    <div class="wrapper style3">
+        <div class="inner">
+            <div class="container">
+                <div class="row">
+                    <div class="12u">
+
+                        <section class="box article-list">
+                            <a href="{% url 'article_list' %}"><h2 class="icon fa-file-text-o">Тематические заебические статьи</h2></a>
+                            {% for article in articles %}
+                                <article class="box excerpt">
+                                    {% if article.image %}
+                                        <a href="{% url 'article' article.pk %}" class="image left"><img src="{{ article.image.url }}" alt="" /></a>
+                                    {% endif %}
+                                    <div>
+                                        <header>
+                                            <span class="date">{{ article.update_date|date:'M Y' }}</span>
+                                            <h3><a href="{% url 'article' article.pk %}">{{ article.title }}</a></h3>
+                                        </header>
+                                        <p>{{ article.body|truncatechars_html:'500'|safe }}</p>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </section>
+
+                        {#  Pagination  #}
+                        {% include 'pagination.html' with url_part='articles' %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

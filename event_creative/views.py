@@ -60,8 +60,8 @@ class Services(TemplateView):
     template_name = 'services.html'
 
 
-class Contacts(TemplateView):
-    """
-    Страница со списком контактов
-    """
-    template_name = 'contacts.html'
+# class Contacts(TemplateView):
+#     """
+#     Страница со списком контактов
+#     """
+#     template_name = 'contacts.html'
