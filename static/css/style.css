@@ -386,7 +386,7 @@
 				Adds a grain-y overlay to your images. Delete this entire rule if
 				that's not something you want.
 			*/
-			.image:before
+			.image:not(.report):before
 			{
 				content: '';
 				display: block;
@@ -761,7 +761,7 @@
 				{
 					border-bottom: solid 1px #dbdbdb;
 					/*margin: 0 0 2.75em 0;*/
-					padding: 0 0 2.75em 0;
+					padding: 0 0 1em 0;
 				}
 
 				.box.article-list article:last-child
