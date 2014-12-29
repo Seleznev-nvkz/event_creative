@@ -3,7 +3,6 @@
 from os import path
 
 BASE_DIR = path.dirname(path.dirname(__file__))
-PROJECT_ROOT = path.dirname(__file__)
 
 SECRET_KEY = 'o+t4ttuk^$8_v00qrrn*qnc+w=0)=b$e=oii0vxlno$zfkef92'
 
@@ -88,10 +87,15 @@ TEMPLATE_DIRS = (
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = path.join(BASE_DIR, 'media')
-STATIC_ROOT = path.join(PROJECT_ROOT, 'static')
+STATIC_ROOT = path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
-    path.join(BASE_DIR, 'static'),
+    path.join(BASE_DIR, 'media'),
 )
 
 REDACTOR_OPTIONS = {'lang': 'ru'}
 REDACTOR_UPLOAD = path.join(STATIC_ROOT, "uploads/")
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
