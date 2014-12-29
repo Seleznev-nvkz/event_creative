@@ -1,0 +1,20 @@
+server {
+    listen    80;
+
+    server_name    eventcreative.org www.eventcreative.org;   
+
+    access_log    /var/log/nginx/event_creative/nginx.access.log;
+    error_log    /var/log/nginx/event_creative/nginx.error.log;
+
+    location /static/ {
+        alias    /data/web/event_creative/static/;
+    }
+    location /media/ {
+        alias    /data/web/event_creative/media/;
+    }
+
+    location / {
+        include    uwsgi_params;
+        uwsgi_pass    unix:///var/run/uwsgi/app/event_creative/socket;
+    }
+}
