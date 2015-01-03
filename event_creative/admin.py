@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Article, Report
+from models import Article, Report, Services
 
 
 class ArticleAdmin(admin.ModelAdmin):
@@ -11,5 +11,11 @@ class ReportAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'active', 'main_show', 'update_date')
     list_filter = ('update_date', 'main_show')
 
+
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ('__unicode__', 'active', 'update_date')
+    list_filter = ('update_date', )
+
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Report, ReportAdmin)
+admin.site.register(Services, ServiceAdmin)
