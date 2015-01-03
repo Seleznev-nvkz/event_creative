@@ -7,44 +7,25 @@
                 <div class="row">
                     <div class="12u">
 
-                        <h2 class="icon fa-file-text-o">Услуги</h2>
-                        <article class="box report">
-                                <a href="" class="image report">
-                                    <img src="http://s57.radikal.ru/i157/1107/51/127bb9d4f3e6.jpg" alt="" />
-                                </a>
-                            <div align="center">
-                                <header>
-                                    <h3>Свадьбы</h3>
-                                </header>
-                                <p></p>
-                            </div>
-                        </article>
+                        <h2 class="icon fa-file-text-o">Наши Услуги</h2>
+                        {% for service in services %}
+                            <article class="box report">
+                            <h3 align="center">{{ service.main_title }}</h3>
+                                {% if service.image %}
+                                    <div class="8u service_image">
+                                        <img src="{{ service.image.url }}" alt="" />
+                                    </div>
+                                {% endif %}
+                                <div align="center">
+                                    <header>
+                                        <h4>{{ service.add_title }}</h4>
+                                    </header>
+                                    <p>{{ service.body|safe }}</p>
+                                </div>
+                            </article>
+                        {% endfor %}
 
-                        <article class="box report">
-                                <a href="" class="image report">
-                                    <img src="http://img.bibo.kz/?4367301.jpg" alt="" />
-                                </a>
-                            <div align="center">
-                                <header>
-                                    <h3>Прическа и макияж</h3>
-                                </header>
-                                <p>Любая девушка хочет выглядеть неотразимой каждый день, но особенно важно для нее стать не просто красивой, а ослепительной в день свадьбы! Ведь на свадьбе вы будете под пристальным вниманием любимого, гостей, фотообъектива и видеокамеры. Обворожительный, но в тоже время утонченный и романтический образ – это то, что создадут стилисты нашего свадебного агентства для вас. Наши визажисты и мастера по прическам – ведущие специалисты в своей области, нам иногда даже кажется, что они творят волшебство!:)</p>
-                            </div>
-                        </article>
-
-                        <article class="box report">
-                                <a href="" class="image report">
-                                    <img src="http://www.dezinfo.net/images5/image/11.2014/assoti_17_11_2014/assoti_17_11_2014_06.jpg" alt="" />
-                                </a>
-                            <div align="center">
-                                <header>
-                                    <h3>Свадебный торт</h3>
-                                </header>
-                                <p>Еще один важный элемент свадьбы, который смело можно отнести к стилистике свадьбы – это торт. Он является кульминацией свадебного дня. Его появление должно получиться эффектным и запоминающимся. И сегодня свадебный торт – это шедевр кулинарного искусства, который должен получиться не только очень вкусным, но и идеально вписанным в общую стилистику. Мы подберем и разработаем с кондитерами торт, который сможет стать достойным финалом вечера.</p>
-                            </div>
-                        </article>
-
-                        {% include 'pagination.html' with url_part='reports' %}
+                        {% include 'pagination.html' with url_part='services' %}
 
                     </div>
                 </div>

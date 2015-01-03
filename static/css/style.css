@@ -206,7 +206,7 @@
 		{
 			border-bottom: double 6px #dbdbdb;
 			margin: 0 0 3em 0;
-            height: 75px;
+            height: 100px;
 		}
 		
 			/*header.major:after*/
@@ -444,6 +444,13 @@
                     max-height: 400px;
                     border-radius: 8px;
                 }
+            .service_image {
+                max-height: 500px;
+                margin: 0 auto 20px auto;
+                overflow: hidden;
+                border-radius: 8px;
+            }
+
 
 	/* Button */
 

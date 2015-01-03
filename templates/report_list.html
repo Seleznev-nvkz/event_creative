@@ -12,7 +12,7 @@
                             <article class="box report">
                                 {% if report.image %}
                                     <a href="{% url 'report' report.pk %}" class="image report">
-                                        <div><img src="{{ report.image.url }}" alt="" /></div>
+                                        <div class="8u service_image"><img src="{{ report.image.url }}" alt="" /></div>
                                     </a>
                                 {% endif %}
                                 <div align="center">
