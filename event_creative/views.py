@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from models import Article, Report
+from models import Article, Report, Services
 from django.views.generic import DetailView, ListView, TemplateView
 
 
@@ -53,11 +53,13 @@ class ReportDetail(DetailView):
     context_object_name = 'report'
 
 
-class Services(TemplateView):
+class ServicesList(ListView):
     """
     Страница со списком услуг
     """
     template_name = 'services.html'
+    model = Services
+    context_object_name = 'services'
 
 
 # class Contacts(TemplateView):
