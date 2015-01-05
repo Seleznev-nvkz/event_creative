@@ -433,24 +433,20 @@
 				}
             .image.report {
                 display: block;
-                margin: 0 2em 2em 0;
+                max-height: 400px;
+                margin: 0 auto 20px auto;
+                overflow: hidden;
+                border-radius: 8px;
+
             }
                 .image.report img {
                     margin: 0 auto;
-					width: 80%;
                 }
                 .image.report>div {
                     overflow: hidden;
                     max-height: 400px;
                     border-radius: 8px;
                 }
-            .service_image {
-                max-height: 500px;
-                margin: 0 auto 20px auto;
-                overflow: hidden;
-                border-radius: 8px;
-            }
-
 
 	/* Button */
 
@@ -997,6 +993,7 @@
 		#footer dl.contact dt
 		{
 			color: #ddd;
+            margin-right: 20px;
 		}
 
 	#copyright

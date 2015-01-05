@@ -11,11 +11,21 @@
                         {% for service in services %}
                             <article class="box report">
                             <h3 align="center">{{ service.main_title }}</h3>
-                                {% if service.image %}
-                                    <div class="8u service_image">
+                                {% if service.slider.exists %}
+                                    <div class="8u image report slider" id="slider{{ forloop.counter }}">
+                                        {% for image in service.slider.all %}
+                                            <img data-src="{{image}}" src="{% if forloop.first %}{{image}}{% endif %}" alt="" />
+                                            <a class="iis-previous-nav"></a>
+                                            <a class="iis-next-nav"></a>
+                                        {% endfor %}
+                                    </div>
+
+                                {% elif service.image %}
+                                    <div class="8u image report">
                                         <img src="{{ service.image.url }}" alt="" />
                                     </div>
                                 {% endif %}
+
                                 <div align="center">
                                     <header>
                                         <h4>{{ service.add_title }}</h4>

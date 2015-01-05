@@ -4,6 +4,13 @@ from redactor.fields import RedactorField
 from django.core.urlresolvers import reverse
 
 
+class ImageTable(models.Model):
+    image = models.ImageField()
+
+    def __unicode__(self):
+        return self.image.url
+
+
 class Article(models.Model):
     """
     Статья
@@ -37,6 +44,7 @@ class Report(models.Model):
     image = models.ImageField(verbose_name=u'Постер', blank=True, null=True)
     main_show = models.BooleanField(default=False, verbose_name=u'Отображать на главной')
     update_date = models.DateTimeField(auto_now=True, verbose_name=u'Дата изменения')
+    slider = models.ManyToManyField(ImageTable)
 
     class Meta:
         verbose_name = verbose_name_plural = u'Отчеты'
@@ -59,6 +67,7 @@ class Services(models.Model):
     active = models.BooleanField(default=True, verbose_name=u'Показывать')
     image = models.ImageField(verbose_name=u'Постер', blank=True, null=True)
     update_date = models.DateTimeField(auto_now=True, verbose_name=u'Дата изменения')
+    slider = models.ManyToManyField(ImageTable)
 
     class Meta:
         verbose_name = verbose_name_plural = u'Услуги'

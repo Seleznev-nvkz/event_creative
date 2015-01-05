@@ -57,9 +57,10 @@ class ServicesList(ListView):
     """
     Страница со списком услуг
     """
-    template_name = 'services.html'
-    model = Services
+    template_name = 'services_list.html'
+    queryset = Services.objects.filter(active=True).order_by('-update_date')
     context_object_name = 'services'
+    paginate_by = 10
 
 
 # class Contacts(TemplateView):
