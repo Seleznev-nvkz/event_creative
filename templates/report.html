@@ -13,8 +13,23 @@
                         <p>{{ report.create_date|date:'d M Y' }}</p>
                     </header>
 
-                    {% if report.image %}
-                        <span class="image featured"><img src="{{ report.image.url }}" alt="" /></span>
+                    {% if report.slider.exists %}
+                        <div class="8u image report slider" id="slider{{ forloop.counter }}">
+                            {% for image in report.slider.all %}
+                                <a href="{% url 'report' report.pk %}">
+                                    <img data-src="{{image}}" src="{% if forloop.first %}{{image}}{% endif %}" alt="" />
+                                </a>
+                                <a class="iis-previous-nav"></a>
+                                <a class="iis-next-nav"></a>
+                            {% endfor %}
+                        </div>
+
+                    {% elif report.image %}
+                        <div class="8u image report">
+                            <a href="{% url 'report' report.pk %}"
+                               class="iis-slide iis-current-slide"
+                               style="background-image: url({{ report.image.url }})"></a>
+                        </div>
                     {% endif %}
 
                     <p>{{ report.body|safe }}</p>

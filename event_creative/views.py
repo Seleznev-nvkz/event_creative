@@ -11,6 +11,7 @@ class Index(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(Index, self).get_context_data(**kwargs)
+        context['services'] = Services.objects.filter(active=True).order_by('-update_date')[:2]
         context['reports'] = Report.objects.filter(active=True, main_show=True).order_by('-update_date')[:3]
         return context
 

@@ -3,8 +3,8 @@
         <div class="inner">
             <div class="container">
                 <div class="row">
-                    <div class="8u">
 
+                    <div class="8u">
                         <section class="box article-list">
                             <a href="{% url 'article_list' %}"><h2 class="icon fa-file-text-o">Тематические заебические статьи</h2></a>
                             {% for article in articles_block %}
@@ -22,10 +22,9 @@
                                 </article>
                             {% endfor %}
                         </section>
-
                     </div>
-                    <div class="4u">
 
+                    <div class="4u">
                         <section class="box spotlight random_report">
                             {% if random_report.image %}
                                 <a href="{% url 'report' random_report.pk %}" class="image featured"><img src="{{ random_report.image.url }}" alt=""></a>
@@ -41,8 +40,8 @@
                                 <a href="{% url 'report' random_report.pk %}" class="button sausage alt icon fa-file-o">Подробнее >></a>
                             </footer>
                         </section>
-
                     </div>
+
                 </div>
             </div>
         </div>

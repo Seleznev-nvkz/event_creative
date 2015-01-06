@@ -11,6 +11,7 @@
         <script src="/static/js/jquery.dropotron.min.js"></script>
 		<script src="/static/js/skel.min.js"></script>
 		<script src="/static/js/skel-layers.min.js"></script>
+        <script src="/static/js/ideal-image-slider.min.js"></script>
 		<script src="/static/js/init.js"></script>
 {#		<noscript>#}
 			<link rel="stylesheet" href="/static/css/skel.css" />
@@ -102,17 +103,4 @@
 			</div>
 
 	</body>
-    <script src="/static/js/ideal-image-slider.min.js"></script>
-    <script>
-            $('.slider').each(function() {
-                console.log(this);
-                var x = new IdealImageSlider.Slider({
-                    selector: '#'+$(this).attr('id'),
-                    effect: 'fade',
-                    height: '400'
-                });
-                x.start()
-            })
-
-    </script>
 </html>

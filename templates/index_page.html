@@ -1,78 +1,99 @@
 {% extends 'root_page.html' %}
+{% load cache %}
 
 {% block header %}
     <div id="banner">
-        <h2><strong>EventCreative:</strong> Пиздатые мероприятия
+        <h2>Организация и проведение
         <br />
-        То да се</h2>
-        <p>Мб и сюда чо нить ебануть</p>
+        Мероприятий</h2>
+{#        <p>Мб и сюда чо нить ебануть</p>#}
     </div>
 {% endblock %}
 
-{% block content %}
-    <div class="wrapper style1">
-        <div class="inner">
+{% cache 3600 index_page using='default' %}
+    {% block content %}
+        <div class="wrapper style1">
+            <div class="inner">
 
-            <!-- Feature 1 -->
-                <section class="container box feature1">
-                    <div class="row">
-                        <div class="12u">
-                            <header class="first major">
-                                <h2>Пали на ребят внизу</h2>
-                                <p>Эти уебы знают толк у кого заказывать мероприятия ...</p>
-                            </header>
-                        </div>
-                    </div>
-                    {% if reports.exists %}
+                <!-- Feature 1 -->
+                    <section class="container box feature1">
                         <div class="row">
-                            {% for report in reports %}
-                                <div class="4u">
+                            <div class="12u">
+                                <header class="first major">
+                                    <h2>Отчеты о мероприятиях</h2>
+    {#                                <p>Эти уебы знают толк у кого заказывать мероприятия ...</p>#}
+                                </header>
+                            </div>
+                        </div>
+                        {% if reports.exists %}
+                            <div class="row">
+                                {% for report in reports %}
+                                    <div class="4u">
+                                        <section>
+                                        <div class="image report" style="height: 220px">
+                                            {% if report.image %}
+                                                <a href="{% url 'report' report.pk %}"
+                                                   class="iis-slide iis-current-slide"
+                                                   style="background-image: url({{ report.image.url }})"></a>
+                                            {% elif report.slider.exists %}
+                                                <a href="{% url 'report' report.pk %}"
+                                                   class="iis-slide iis-current-slide"
+                                                   style="background-image: url({{ report.slider.first }})"></a>
+                                            {% endif %}
+                                        </div>
+                                            <a href="{% url 'report' report.pk %}">
+                                                <header class="second">
+                                                    <h3>{{ report.main_title }}</h3>
+                                                    <p>{{ report.add_title }}</p>
+                                                </header>
+                                            </a>
+                                        </section>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </section>
+
+            </div>
+        </div>
+        <div class="wrapper style2">
+            <div class="inner">
+
+                    <section class="container box feature2">
+                        <div class="row">
+                            {% for service in services %}
+                                <div class="6u">
                                     <section>
-                                        <a href="#" class="image featured"><img src="{{ report.image.url }}" alt="" /></a>
-                                        <header class="second">
-                                            <h3>{{ report.main_title }}</h3>
-                                            <p>{{ report.add_title }}</p>
+                                        <header class="major">
+                                            <h2>{{ service.main_title }}</h2>
                                         </header>
+                                        {% if service.slider.exists %}
+                                            <div id="slider{{ forloop.counter }}" class="slider image report">
+                                            {% for image in service.slider.all %}
+                                                <img data-src="{{image}}" src="{% if forloop.first %}{{image}}{% endif %}" alt="" />
+                                                <a class="iis-previous-nav"></a>
+                                                <a class="iis-next-nav"></a>
+                                            {% endfor %}
+                                            </div>
+
+                                        {% elif service.image %}
+                                            <div class="image report">
+                                                <a style="background-image: url({{service.image.url}})" class="iis-slide iis-current-slide"></a>
+                                            </div>
+                                        {% endif %}
+
+                                        <h4>{{ service.add_title }}</h4>
+                                        <p>{{ service.body }}</p>
                                     </section>
                                 </div>
                             {% endfor %}
                         </div>
-                    {% endif %}
-                </section>
 
+                        <footer>
+                            <a href="{% url 'service_list' %}" class="button sausage alt icon fa-info-circle">Список услуг >></a>
+                        </footer>
+                    </section>
+                </div>
         </div>
-    </div>
-    <div class="wrapper style2">
-        <div class="inner">
-
-            <!-- Feature 2 -->
-                <section class="container box feature2">
-                    <div class="row">
-                        <div class="6u">
-                            <section>
-                                <header class="major">
-                                    <h2>Хочешь ахуенную причу?</h2>
-                                </header>
-                                <img src="http://img.bibo.kz/?4367301.jpg">
-                                <h4>Прически и макияж</h4>
-                                <p>Любая девушка хочет выглядеть неотразимой каждый день, но особенно важно для нее стать не просто красивой, а ослепительной в день свадьбы! Ведь на свадьбе вы будете под пристальным вниманием любимого, гостей, фотообъектива и видеокамеры. Обворожительный, но в тоже время утонченный и романтический образ – это то, что создадут стилисты нашего свадебного агентства для вас. Наши визажисты и мастера по прическам – ведущие специалисты в своей области, нам иногда даже кажется, что они творят волшебство!:)</p>
-                            </section>
-                        </div>
-                        <div class="6u">
-                            <section>
-                                <header class="major">
-                                    <h2>Как завладеть вниманием гостей с первых минут?</h2>
-                                </header>
-                                <img src="http://cs319224.vk.me/v319224132/6bcd/PWv8A5fOdEo.jpg">
-                                <h4>Программа вечера</h4>
-                                <p>Как завладеть вниманием гостей с первых минут? Надо уже «с порога» вовлечь зрителя в атмосферу легкого и непринужденного веселья. Удивление, радость, сменяющееся неожиданными сюрпризами приведут в восторг и вас, и ваших гостей.</p>
-                            </section>
-                        </div>
-                    </div>
-                    <footer>
-                        <a href="{% url 'service_list' %}" class="button sausage alt icon fa-info-circle">А ну ка чо там >></a>
-                    </footer>
-                </section>
-            </div>
-    </div>
-{% endblock %}
+    {% endblock %}
+{% endcache %}

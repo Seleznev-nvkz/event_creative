@@ -14,7 +14,11 @@
                         </header>
 
                         {% if article.image %}
-                            <span class="image featured"><img src="{{ article.image.url }}" alt="" /></span>
+                            <div class="8u image report">
+                            <a href="{% url 'article' article.pk %}"
+                               class="iis-slide iis-current-slide"
+                               style="background-image: url({{ article.image.url }})"></a>
+                        </div>
                         {% endif %}
 
                         <p>{{ article.body|safe }}</p>

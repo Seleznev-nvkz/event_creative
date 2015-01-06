@@ -5,14 +5,15 @@
 */
 
 (function($) {
+    var clear_url = window.location.origin;
 
 	skel.init({
 		reset: 'full',
 		breakpoints: {
-			'global':	{ range: '*', href: 'static/css/style.css' },
-			'desktop':	{ range: '737-', href: 'static/css/style-desktop.css', containers: 1200, grid: { gutters: 50 } },
-			'1000px':	{ range: '737-1200', href: 'static/css/style-1000px.css', containers: 1000, grid: { gutters: 35 }, viewport: { width: 1080 } },
-			'mobile':	{ range: '-736', href: 'static/css/style-mobile.css', containers: '100%!', grid: { collapse: true, gutters: 10 }, viewport: { scalable: false } }
+			'global':	{ range: '*', href: clear_url + '/static/css/style.css' },
+			'desktop':	{ range: '737-', href: clear_url + '/static/css/style-desktop.css', containers: 1200, grid: { gutters: 50 } },
+			'1000px':	{ range: '737-1200', href: clear_url + '/static/css/style-1000px.css', containers: 1000, grid: { gutters: 35 }, viewport: { width: 1080 } },
+			'mobile':	{ range: '-736', href: clear_url + '/static/css/style-mobile.css', containers: '100%!', grid: { collapse: true, gutters: 10 }, viewport: { scalable: false } }
 		},
 		plugins: {
 			layers: {
@@ -79,5 +80,16 @@
 			});
 
 	});
+
+    $(function() {
+        $('.slider').each(function() {
+            var x = new IdealImageSlider.Slider({
+                selector: '#'+$(this).attr('id'),
+                effect: 'fade',
+                height: '400'
+            });
+            x.start();
+        })
+    });
 
 })(jQuery);

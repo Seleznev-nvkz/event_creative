@@ -22,7 +22,7 @@
 
                                 {% elif service.image %}
                                     <div class="8u image report">
-                                        <img src="{{ service.image.url }}" alt="" />
+                                        <a style="background-image: url({{ service.image.url }})" class="iis-slide iis-current-slide"></a>
                                     </div>
                                 {% endif %}
 
