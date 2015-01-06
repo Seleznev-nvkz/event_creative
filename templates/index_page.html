@@ -10,90 +10,88 @@
     </div>
 {% endblock %}
 
-{% cache 3600 index_page using='default' %}
-    {% block content %}
-        <div class="wrapper style1">
-            <div class="inner">
+{% block content %}
+    <div class="wrapper style1">
+        <div class="inner">
 
-                <!-- Feature 1 -->
-                    <section class="container box feature1">
-                        <div class="row">
-                            <div class="12u">
-                                <header class="first major">
-                                    <h2>Отчеты о мероприятиях</h2>
-    {#                                <p>Эти уебы знают толк у кого заказывать мероприятия ...</p>#}
-                                </header>
-                            </div>
+            <!-- Feature 1 -->
+                <section class="container box feature1">
+                    <div class="row">
+                        <div class="12u">
+                            <header class="first major">
+                                <h2>Отчеты о мероприятия</h2>
+{#                                <p>Эти уебы знают толк у кого заказывать мероприятия ...</p>#}
+                            </header>
                         </div>
-                        {% if reports.exists %}
-                            <div class="row">
-                                {% for report in reports %}
-                                    <div class="4u">
-                                        <section>
-                                        <div class="image report" style="height: 220px">
-                                            {% if report.image %}
-                                                <a href="{% url 'report' report.pk %}"
-                                                   class="iis-slide iis-current-slide"
-                                                   style="background-image: url({{ report.image.url }})"></a>
-                                            {% elif report.slider.exists %}
-                                                <a href="{% url 'report' report.pk %}"
-                                                   class="iis-slide iis-current-slide"
-                                                   style="background-image: url({{ report.slider.first }})"></a>
-                                            {% endif %}
-                                        </div>
-                                            <a href="{% url 'report' report.pk %}">
-                                                <header class="second">
-                                                    <h3>{{ report.main_title }}</h3>
-                                                    <p>{{ report.add_title }}</p>
-                                                </header>
-                                            </a>
-                                        </section>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </section>
-
-            </div>
-        </div>
-        <div class="wrapper style2">
-            <div class="inner">
-
-                    <section class="container box feature2">
+                    </div>
+                    {% if reports.exists %}
                         <div class="row">
-                            {% for service in services %}
-                                <div class="6u">
+                            {% for report in reports %}
+                                <div class="4u">
                                     <section>
-                                        <header class="major">
-                                            <h2>{{ service.main_title }}</h2>
-                                        </header>
-                                        {% if service.slider.exists %}
-                                            <div id="slider{{ forloop.counter }}" class="slider image report">
-                                            {% for image in service.slider.all %}
-                                                <img data-src="{{image}}" src="{% if forloop.first %}{{image}}{% endif %}" alt="" />
-                                                <a class="iis-previous-nav"></a>
-                                                <a class="iis-next-nav"></a>
-                                            {% endfor %}
-                                            </div>
-
-                                        {% elif service.image %}
-                                            <div class="image report">
-                                                <a style="background-image: url({{service.image.url}})" class="iis-slide iis-current-slide"></a>
-                                            </div>
+                                    <div class="image report" style="height: 220px">
+                                        {% if report.image %}
+                                            <a href="{% url 'report' report.pk %}"
+                                               class="iis-slide iis-current-slide"
+                                               style="background-image: url({{ report.image.url }})"></a>
+                                        {% elif report.slider.exists %}
+                                            <a href="{% url 'report' report.pk %}"
+                                               class="iis-slide iis-current-slide"
+                                               style="background-image: url({{ report.slider.first }})"></a>
                                         {% endif %}
-
-                                        <h4>{{ service.add_title }}</h4>
-                                        <p>{{ service.body }}</p>
+                                    </div>
+                                        <a href="{% url 'report' report.pk %}">
+                                            <header class="second">
+                                                <h3>{{ report.main_title }}</h3>
+                                                <p>{{ report.add_title }}</p>
+                                            </header>
+                                        </a>
                                     </section>
                                 </div>
                             {% endfor %}
                         </div>
+                    {% endif %}
+                </section>
 
-                        <footer>
-                            <a href="{% url 'service_list' %}" class="button sausage alt icon fa-info-circle">Список услуг >></a>
-                        </footer>
-                    </section>
-                </div>
         </div>
-    {% endblock %}
-{% endcache %}
+    </div>
+    <div class="wrapper style2">
+        <div class="inner">
+
+                <section class="container box feature2">
+                    <div class="row">
+                        {% for service in services %}
+                            <div class="6u">
+                                <section>
+                                    <header class="major">
+                                        <h2>{{ service.main_title }}</h2>
+                                    </header>
+                                    {% if service.slider.exists %}
+                                        <div id="slider{{ forloop.counter }}" class="slider image report">
+                                        {% for image in service.slider.all %}
+                                            <img data-src="{{image}}" src="{% if forloop.first %}{{image}}{% endif %}" alt="" />
+                                            <a class="iis-previous-nav"></a>
+                                            <a class="iis-next-nav"></a>
+                                        {% endfor %}
+                                        </div>
+
+                                    {% elif service.image %}
+                                        <div class="image report">
+                                            <a style="background-image: url({{service.image.url}})" class="iis-slide iis-current-slide"></a>
+                                        </div>
+                                    {% endif %}
+
+                                    <h4>{{ service.add_title }}</h4>
+                                    <p>{{ service.body }}</p>
+                                </section>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <footer>
+                        <a href="{% url 'service_list' %}" class="button sausage alt icon fa-info-circle">Список услуг >></a>
+                    </footer>
+                </section>
+            </div>
+    </div>
+{% endblock %}

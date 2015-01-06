@@ -2,6 +2,9 @@
 from django.db import models
 from redactor.fields import RedactorField
 from django.core.urlresolvers import reverse
+from django.dispatch import receiver
+from django.db.models.signals import post_save
+from django.core.cache import cache
 
 
 class ImageTable(models.Model):
@@ -44,7 +47,7 @@ class Report(models.Model):
     image = models.ImageField(verbose_name=u'Постер', blank=True, null=True)
     main_show = models.BooleanField(default=False, verbose_name=u'Отображать на главной')
     update_date = models.DateTimeField(auto_now=True, verbose_name=u'Дата изменения')
-    slider = models.ManyToManyField(ImageTable, null=True)
+    slider = models.ManyToManyField(ImageTable, null=True, blank=True)
 
     class Meta:
         verbose_name = verbose_name_plural = u'Отчеты'
@@ -67,7 +70,7 @@ class Services(models.Model):
     active = models.BooleanField(default=True, verbose_name=u'Показывать')
     image = models.ImageField(verbose_name=u'Постер', blank=True, null=True)
     update_date = models.DateTimeField(auto_now=True, verbose_name=u'Дата изменения')
-    slider = models.ManyToManyField(ImageTable, null=True)
+    slider = models.ManyToManyField(ImageTable, null=True, blank=True)
 
     class Meta:
         verbose_name = verbose_name_plural = u'Услуги'
@@ -77,3 +80,8 @@ class Services(models.Model):
 
     def get_absolute_url(self):
         return reverse('service', args=[str(self.pk), ])
+
+
+@receiver(post_save)
+def clear_cache(sender, **kwargs):
+    cache.clear()
