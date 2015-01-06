@@ -3,7 +3,7 @@ from django.db import models
 from redactor.fields import RedactorField
 from django.core.urlresolvers import reverse
 from django.dispatch import receiver
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.core.cache import cache
 
 
@@ -82,6 +82,7 @@ class Services(models.Model):
         return reverse('service', args=[str(self.pk), ])
 
 
-@receiver(post_save)
-def clear_cache(sender, **kwargs):
-    cache.clear()
+@receiver([post_save, post_delete])
+def recache(**kwargs):
+    if kwargs.get('instance') and isinstance(kwargs.get('instance'), (Article, Report, Services)):
+        cache.clear()
