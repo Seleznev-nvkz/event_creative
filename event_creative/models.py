@@ -47,7 +47,7 @@ class Report(models.Model):
     image = models.ImageField(verbose_name=u'Постер', blank=True, null=True)
     main_show = models.BooleanField(default=False, verbose_name=u'Отображать на главной')
     update_date = models.DateTimeField(auto_now=True, verbose_name=u'Дата изменения')
-    slider = models.ManyToManyField(ImageTable, null=True, blank=True)
+    slider = models.ManyToManyField(ImageTable, null=True, blank=True, related_name='report_slider')
 
     class Meta:
         verbose_name = verbose_name_plural = u'Отчеты'
@@ -70,7 +70,7 @@ class Services(models.Model):
     active = models.BooleanField(default=True, verbose_name=u'Показывать')
     image = models.ImageField(verbose_name=u'Постер', blank=True, null=True)
     update_date = models.DateTimeField(auto_now=True, verbose_name=u'Дата изменения')
-    slider = models.ManyToManyField(ImageTable, null=True, blank=True)
+    slider = models.ManyToManyField(ImageTable, null=True, blank=True, related_name='services_slider')
 
     class Meta:
         verbose_name = verbose_name_plural = u'Услуги'
