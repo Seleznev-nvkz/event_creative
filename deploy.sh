@@ -6,3 +6,4 @@ if ! [ -e '/etc/uwsgi/apps-enabled/event_creative.ini' ]; then
 fi
 uwsgi --ini /etc/uwsgi/apps-enabled/event_creative.ini
 service nginx restart
+redis-cli flushall
