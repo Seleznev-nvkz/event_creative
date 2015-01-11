@@ -5,6 +5,19 @@ from django.core.urlresolvers import reverse
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
 from django.core.cache import cache
+from PIL import Image
+from os.path import isfile
+
+
+def img_resize(obj):
+    if obj.image:
+        img_path = obj.image._get_path()
+        if isfile(img_path):
+            image = Image.open(img_path)
+            if image.size > 800:
+                percent = 800.0/image.size[0]
+                image.thumbnail((800, int(image.size[1]*percent)), Image.ANTIALIAS)
+                image.save(img_path, quality=90)
 
 
 class ImageTable(models.Model):
@@ -84,5 +97,6 @@ class Services(models.Model):
 
 @receiver([post_save, post_delete])
 def recache(**kwargs):
-    if kwargs.get('instance') and isinstance(kwargs.get('instance'), (Article, Report, Services)):
+    if kwargs.get('instance') and isinstance(kwargs.get('instance'), (Article, Report, Services, ImageTable)):
         cache.clear()
+        img_resize(kwargs.get('instance'))
