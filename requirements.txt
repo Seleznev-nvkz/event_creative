@@ -1,7 +1,7 @@
 Django==1.7.2
 django-menus==1.1.2
 django-redis-cache==0.13.0
-django-wysiwyg-redactor==0.4.4
+django-wysiwyg-redactor==0.4.4.1
 Pillow==2.7.0
 psycopg2==2.5.4
 redis==2.10.3
