@@ -82,7 +82,7 @@
                                     {% endif %}
 
                                     <h4>{{ service.add_title }}</h4>
-                                    <p>{{ service.body|safe }}</p>
+                                    <p>{{ service.body|truncatechars_html:'300'|safe }}</p>
                                 </section>
                             </div>
                         {% endfor %}
