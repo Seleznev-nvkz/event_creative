@@ -28,6 +28,8 @@
                         <section class="box spotlight random_report">
                             {% if random_report.image %}
                                 <a href="{% url 'report' random_report.pk %}" class="image featured"><img src="{{ random_report.image.url }}" alt=""></a>
+                            {% elif random_report.slider.exists %}
+                                <a href="{% url 'report' random_report.pk %}" class="image featured"><img src="{{ random_report.slider.first }}" alt=""></a>
                             {% endif %}
                             <a href="{% url 'report' random_report.pk %}">
                                 <header>
