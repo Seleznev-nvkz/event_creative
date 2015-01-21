@@ -1,5 +1,5 @@
 ###Description
-Simple site wrote on Django with caching views, js sliders, PSQL DB and WYSIWYG-redactor in admin for easily adding content.
+Simple site is written on Django with caching views, js sliders, PSQL DB and WYSIWYG-redactor in admin for easily adding content.
 
 ###Tech Stack
 * Django as framework on backend
@@ -17,7 +17,7 @@ Simple site wrote on Django with caching views, js sliders, PSQL DB and WYSIWYG-
 * redis==2.10.3
 * uWSGI==2.0.9
 
-for install this with pip after get the project up:
+after you get the project up you can use pip to install this:
 ```sh
 pip install -r requirements.txt
 ```
