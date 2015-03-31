@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from models import Article, Report, Services
+from models import Article, Report, Services, Price
 from django.views.generic import DetailView, ListView, TemplateView
 
 
@@ -62,6 +62,13 @@ class ServicesList(ListView):
     queryset = Services.objects.filter(active=True).order_by('-update_date')
     context_object_name = 'services'
     paginate_by = 10
+
+
+class PriceView(DetailView):
+    template_name = 'price.html'
+
+    def get_object(self, queryset=None):
+        return Price.objects.filter(active=True).last()
 
 
 # class Contacts(TemplateView):

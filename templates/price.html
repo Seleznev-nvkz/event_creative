@@ -1,0 +1,42 @@
+{% extends 'root_page.html' %}
+
+{% block content %}
+
+    <div class="wrapper style3">
+        <div class="inner">
+            <div class="container">
+                {% if price %}
+                    <div id="content">
+
+                        <header class="major" style="text-align: center">
+                            <h2>{{ price.title }}</h2>
+                        </header>
+
+                        {% if price.slider.exists %}
+                            <div class="8u image report slider" id="slider{{ forloop.counter }}">
+                                {% for image in price.slider.all %}
+                                    <a href="{% url 'price' %}">
+                                        <img data-src="{{image}}" src="{% if forloop.first %}{{image}}{% endif %}" alt="" />
+                                    </a>
+                                    <a class="iis-previous-nav"></a>
+                                    <a class="iis-next-nav"></a>
+                                {% endfor %}
+                            </div>
+
+                        {% elif price.image %}
+                            <div class="8u image report">
+                                <a href="{% url 'price' %}"
+                                   class="iis-slide iis-current-slide"
+                                   style="background-image: url({{ report.image.url }})"></a>
+                            </div>
+                        {% endif %}
+
+                        <p>{{ price.body|safe }}</p>
+
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

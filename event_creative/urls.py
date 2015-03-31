@@ -11,4 +11,5 @@ urlpatterns = patterns(
     url(r'^services/$', cache_page(0)(ServicesList.as_view()), name='service_list'),
     url(r'^reports/$', cache_page(0)(ReportList.as_view()), name='report_list'),
     url(r'^report/(?P<pk>[0-9]{1,3})/$', cache_page(0)(ReportDetail.as_view()), name='report'),
+    url(r'^price/$', cache_page(0)(PriceView.as_view()), name='price'),
 )

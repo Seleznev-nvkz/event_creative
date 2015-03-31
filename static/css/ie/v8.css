@@ -28,7 +28,7 @@
 
 	#header-wrapper
 	{
-		background: url('../../images/header.jpg');
+		background: url('../../images/back.jpg');
 		background-position: center center;
 		background-size: cover;
 		-ms-behavior: url('css/ie/backgroundsize.min.htc');

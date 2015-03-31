@@ -95,6 +95,26 @@ class Services(models.Model):
         return reverse('service', args=[str(self.pk), ])
 
 
+class Price(models.Model):
+    """
+    Бюджет
+    """
+    title = models.CharField(max_length=128,  verbose_name=u'заголовок')
+    body = RedactorField(verbose_name=u'Текст')
+    active = models.BooleanField(default=True, verbose_name=u'Показывать')
+    image = models.ImageField(verbose_name=u'Постер', blank=True, null=True)
+    slider = models.ManyToManyField(ImageTable, null=True, blank=True, related_name='price_slider')
+
+    class Meta:
+        verbose_name = verbose_name_plural = u'Бюджет'
+
+    def __unicode__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('price')
+
+
 @receiver([post_save, post_delete])
 def recache(**kwargs):
     if kwargs.get('instance') and isinstance(kwargs.get('instance'), (Article, Report, Services, ImageTable)):

@@ -37,17 +37,18 @@
 				<div class="container">
                     <header id="header">
                         <div class="inner">
-                            <h1><a href="{% url 'main_page' %}" id="logo">EventCreative</a></h1>
+                            <h1><a href="{% url 'main_page' %}" id="logo" style="letter-spacing: 0.12em; font-style: italic;">eventcreative</a></h1>
                             <nav id="nav">
                                 <ul>
                                     <li class="{% active_url request 'main_page' %}"><a href="{% url 'main_page' %}">Главная</a></li>
                                     <li class="{% active_url request 'service_list' %}"><a href="{% url 'service_list' %}">Услуги</a></li>
+                                    <li class="{% active_url request 'service_list' %}"><a href="{% url 'price' %}">Бюджет</a></li>
                                     <li class="{% active_url request 'article_list article' %}"><a href="{% url 'article_list' %}">Статьи</a></li>
                                     <li class="{% active_url request 'report_list report' %}"><a href="{% url 'report_list' %}">Отчеты</a></li>
 {#                                    <li class="{% active_url request 'contacts' %}"><a href="{% url 'contacts' %}">О нас</a></li>#}
                                     <li>
                                         <a class="social_icon" href="http://vk.com/ev_cr"><img src="/static/images/rsz_vk.png" class="vk"></a>
-                                        <a class="social_icon" href="http://instagram.com/event_creative"><img src="/static/images/rsz_1instagram.png" class="instagram"></a>
+                                        <a class="social_icon" href="http://instagram.com/event_decor_osnk"><img src="/static/images/rsz_1instagram.png" class="instagram"></a>
                                     </li>
                                 </ul>
                             </nav>
@@ -83,8 +84,8 @@
 													<!--<dt>Facebook</dt>-->
 													<!--<dd><a href="#">facebook.com/untitled</a></dd>-->
 													<dt>Instagram</dt>
-													<dd><a href="http://instagram.com/event_creative">event_creative</a></dd>
-													<dt>Email</dt>
+													<dd><a href="http://instagram.com/event_decor_osnk">event_creative</a></dd>
+													<dt>e-mail</dt>
 													<dd><a href="mailto:event-creative@mail.ru">event-creative@mail.ru</a></dd>
 												</dl>
 											</div>
