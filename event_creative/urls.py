@@ -4,7 +4,7 @@ from views import *
 
 urlpatterns = patterns(
     'event_creative.urls',
-    url(r'^$', cache_page(0)(Index.as_view()), name='main_page'),
+    url(r'^$', Index.as_view(), name='main_page'),
     url(r'^articles/$', cache_page(0)(ArticleList.as_view()), name='article_list'),
     # url(r'^contacts/$', Contacts.as_view(), name='contacts'),
     url(r'^article/(?P<pk>[0-9]{1,3})/$', cache_page(0)(ArticleDetail.as_view()), name='article'),

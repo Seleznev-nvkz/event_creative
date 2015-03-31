@@ -25,23 +25,25 @@
                     </div>
 
                     <div class="4u">
-                        <section class="box spotlight random_report">
-                            {% if random_report.image %}
-                                <a href="{% url 'report' random_report.pk %}" class="image featured"><img src="{{ random_report.image.url }}" alt=""></a>
-                            {% elif random_report.slider.exists %}
-                                <a href="{% url 'report' random_report.pk %}" class="image featured"><img src="{{ random_report.slider.first }}" alt=""></a>
-                            {% endif %}
-                            <a href="{% url 'report' random_report.pk %}">
-                                <header>
-                                    <h3>{{ random_report.main_title }}</h3>
-                                    <p>{{ random_report.add_title }}</p>
-                                </header>
-                            </a>
-                            {{ random_report.body|truncatechars_html:'500'|safe }}
-                            <footer>
-                                <a href="{% url 'report' random_report.pk %}" class="button sausage alt icon fa-file-o">Подробнее >></a>
-                            </footer>
-                        </section>
+                        {% if random_report %}
+                            <section class="box spotlight random_report">
+                                {% if random_report.image %}
+                                    <a href="{% url 'report' random_report.pk %}" class="image featured"><img src="{{ random_report.image.url }}" alt=""></a>
+                                {% elif random_report.slider.exists %}
+                                    <a href="{% url 'report' random_report.pk %}" class="image featured"><img src="{{ random_report.slider.first }}" alt=""></a>
+                                {% endif %}
+                                <a href="{% url 'report' random_report.pk %}">
+                                    <header>
+                                        <h3>{{ random_report.main_title }}</h3>
+                                        <p>{{ random_report.add_title }}</p>
+                                    </header>
+                                </a>
+                                {{ random_report.body|truncatechars_html:'500'|safe }}
+                                <footer>
+                                    <a href="{% url 'report' random_report.pk %}" class="button sausage alt icon fa-file-o">Подробнее >></a>
+                                </footer>
+                            </section>
+                        {% endif %}
                     </div>
 
                 </div>
