@@ -1,16 +1,25 @@
 server {
     listen    80;
     client_max_body_size 15m;
-    server_name    eventcreative.org www.eventcreative.org;   
+    server_name    eventcreative.org www.eventcreative.org;
+
+    gzip             on;
+    gzip_min_length  1000;
+    gzip_comp_level  5;
+    gzip_proxied     expired no-cache no-store private auth;
+    gzip_types       gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript;
+
 
     access_log    /var/log/nginx/event_creative/nginx.access.log;
     error_log    /var/log/nginx/event_creative/nginx.error.log;
 
     location /static/ {
         alias    /data/web/event_creative/static/;
+        expires 30d;
     }
     location /media/ {
         alias    /data/web/event_creative/media/;
+        expires 30d;
     }
 
     location / {

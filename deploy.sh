@@ -1,5 +1,6 @@
 #!/bin/bash
-git pull origin master
+branch=${$1:-master}
+git pull origin $1
 if ! [ -e '/etc/uwsgi/apps-enabled/event_creative.ini' ]; then
 	cp -f conf/event_creative.ini /etc/uwsgi/apps-available/
 	ln -sf /etc/uwsgi/apps-available/event_creative.ini /etc/uwsgi/apps-enabled/event_creative.ini
