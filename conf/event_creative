@@ -1,5 +1,5 @@
 server {
-    listen    80;
+    listen 80 reuseport;
     client_max_body_size 15m;
     server_name    eventcreative.org www.eventcreative.org;
 
